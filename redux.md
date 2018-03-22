@@ -37,21 +37,21 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
     这就是一种umd写法，既支持Amd 又支持CommonJS，还支持 global
 
 
-        createStore(reducer,[preloadedState],[enhancer])
-            reducer 纯函数，接受 state、action 2个参数 ，返回 一个新的state
-            preloadedState state的初始值，可以把服务端传过来的state传递给它，也可以从之前保存的一个会话中恢复一个传给它
-            如果是 使用combineReducers创建reducer的，它必须是一个对象并与传入的keys值保持一致（对于state 解构的要求）
-            enhancer 是一个组合store creator的高阶函数，返回一个新的强化过的create store
+>* ## createStore(reducer,[preloadedState],[enhancer])
+    reducer 纯函数，接受 state、action 2个参数 ，返回 一个新的state
+    preloadedState state的初始值，可以把服务端传过来的state传递给它，也可以从之前保存的一个会话中恢复一个传给它
+    如果是 使用combineReducers创建reducer的，它必须是一个对象并与传入的keys值保持一致（对于state 解构的要求）
+    enhancer 是一个组合store creator的高阶函数，返回一个新的强化过的create store
 
-        需要使用多个增强器的时候就会选择compose
-        [小提示] store创建之后，redux 会自动dispatch一个action(这个action我们不需要处理)来用初始的state填充store，如果state为undifined则会返回初始值
-                对于服务端运行的同构应用，应该为每个请求创建一个store实例，以此让store相隔离（优势目前我也不知道，没有涉及服务端渲染）
+    需要使用多个增强器的时候就会选择compose
+    [小提示] store创建之后，redux 会自动dispatch一个action(这个action我们不需要处理)来用初始的state填充store，如果state为undifined则会返回初始值
+            对于服务端运行的同构应用，应该为每个请求创建一个store实例，以此让store相隔离（优势目前我也不知道，没有涉及服务端渲染）
 
-        store 官方的定义 只是一个有几个方法的对象并部署以类的范畴，要创建它我们只要把根部的reducer函数传递给createStore就可以了
-            getState 返回当前的state树，它与最后一个reducer返回的state相同
-            dispatch(action) 分发action，这是触发state变化的唯一途径，使用当前state和传入的action同步调用store对应的reducer函数，同时变化监听器会触发
-            在redux里面只有根reducer返回新state结束之后才会调用事件监听器，再次触发的dispatch可以写在监听回调里面
-            action不使用Symbol作为唯一标识的原因是Symbol不是字符串，不可被序列化
+>* ## store 官方的定义 只是一个有几个方法的对象并部署以类的范畴，要创建它我们只要把根部的reducer函数传递给createStore就可以了
+    getState 返回当前的state树，它与最后一个reducer返回的state相同
+    dispatch(action) 分发action，这是触发state变化的唯一途径，使用当前state和传入的action同步调用store对应的reducer函数，同时变化监听器会触发
+    在redux里面只有根reducer返回新state结束之后才会调用事件监听器，再次触发的dispatch可以写在监听回调里面
+    action不使用Symbol作为唯一标识的原因是Symbol不是字符串，不可被序列化
 
             如果使用applyMiddleware来套住createStore的时候，middleware可以修改action的执行，
 
