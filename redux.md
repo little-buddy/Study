@@ -7,14 +7,14 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
 >* bindActionCreators(actionCreateors,dispatch)
 >* compose(...function/')
 
->##stroe API
+>## stroe API
 >* getState
 >* dispatch
 >* subscribe
 >* getReducer
 >* replaceReducer(nextReducer)
 
->##[题外] umd 的含义是通用模块规范，是对 AMD CommonJS的一种兼容性写法
+>## [题外] umd 的含义是通用模块规范，是对 AMD CommonJS的一种兼容性写法
     (function (root, factory) {
         if (typeof define === 'function' && define.amd) {
             // AMD
