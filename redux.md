@@ -48,10 +48,10 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
             对于服务端运行的同构应用，应该为每个请求创建一个store实例，以此让store相隔离（优势目前我也不知道，没有涉及服务端渲染）
 
 >* ## store 官方的定义 只是一个有几个方法的对象并部署以类的范畴，要创建它我们只要把根部的reducer函数传递给createStore就可以了
-    getState 返回当前的state树，它与最后一个reducer返回的state相同
-    dispatch(action) 分发action，这是触发state变化的唯一途径，使用当前state和传入的action同步调用store对应的reducer函数，同时变化监听器会触发
-    在redux里面只有根reducer返回新state结束之后才会调用事件监听器，再次触发的dispatch可以写在监听回调里面
-    action不使用Symbol作为唯一标识的原因是Symbol不是字符串，不可被序列化
+>getState 返回当前的state树，它与最后一个reducer返回的state相同
+dispatch(action) 分发action，这是触发state变化的唯一途径，使用当前state和传入的action同步调用store对应的reducer函数，同时变化监听器会触发
+在redux里面只有根reducer返回新state结束之后才会调用事件监听器，再次触发的dispatch可以写在监听回调里面
+action不使用Symbol作为唯一标识的原因是Symbol不是字符串，不可被序列化
 
             如果使用applyMiddleware来套住createStore的时候，middleware可以修改action的执行，
 
