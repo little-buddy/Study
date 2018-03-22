@@ -53,28 +53,28 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
 * 在redux里面只有根reducer返回新state结束之后才会调用事件监听器，再次触发的dispatch可以写在监听回调里面
 * action不使用Symbol作为唯一标识的原因是Symbol不是字符串，不可被序列化
 
-            如果使用applyMiddleware来套住createStore的时候，middleware可以修改action的执行，
+* 如果使用applyMiddleware来套住createStore的时候，middleware可以修改action的执行，
 
-            subscribe添加一个变化监听器，由于dispatch执行结束之后就会调用subscribe监听器，肯能会进入不断dispatch的无线循环之中
+* subscribe添加一个变化监听器，由于dispatch执行结束之后就会调用subscribe监听器，肯能会进入不断dispatch的无线循环之中
 
-            replaceReducer（nextReducer） 替换当前用来计算state的reducer，感觉应用场景有点脱离实际
+* replaceReducer（nextReducer） 替换当前用来计算state的reducer，感觉应用场景有点脱离实际
 
-            combineReducers 的出现意义就是随着应用场景越来越复杂,需要将reducer函数进行拆分，各自相对独立地管理一部分state
+>* combineReducers 的出现意义就是随着应用场景越来越复杂,需要将reducer函数进行拆分，各自相对独立地管理一部分state
 
-            rootReducer = combineReducers({potato:potatoReducer,tomato:tomatoReducer})
-            rootState = {
-                potato:{
-                    ...potatoState 对象
-                },
-                tomato:{
-                    ...tomatoState 对象
-                }
-            }
+    rootReducer = combineReducers({potato:potatoReducer,tomato:tomatoReducer})
+    rootState = {
+        potato:{
+            ...potatoState 对象
+        },
+        tomato:{
+            ...tomatoState 对象
+        }
+    }
 
-            每个combineReducer传入的reducer都必须满足以下规则：
-                所有未匹配到的action，必须把他接收到的第一个参数也就是那个state原封不动返回
-                永远不能返回undifined，这个combineReducers 会抛出异常
-                如果传入state为undifined则必须返回初始的state，根据这一条规则一般禁止 state为 undifined，而combineReducers会帮你检测你的reducer是否符合标准应该就是第一次的state的初始化
+    每个combineReducer传入的reducer都必须满足以下规则：
+        所有未匹配到的action，必须把他接收到的第一个参数也就是那个state原封不动返回
+        永远不能返回undifined，这个combineReducers 会抛出异常
+        如果传入state为undifined则必须返回初始的state，根据这一条规则一般禁止 state为 undifined，而combineReducers会帮你检测你的reducer是否符合标准应该就是第一次的state的初始化
 
 
         applyMiddleware     可以让你包装store的dispatch方法来达到你想要的目的
