@@ -96,5 +96,7 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
 
     export default thunk;
     每个中间件都是 以store 的 dispatch 和 getState 为命名参数，并返回一个方法
+
+    
 >redux 是一个概念性的东西，实际API的源码行数也就那么几行，但想到这种管理state来实行 时间旅行的思维却是跨时代的
 
