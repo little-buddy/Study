@@ -59,7 +59,7 @@ Redux 只是一个用来管理state并进行概念上的约束的这么一个类
 
 * replaceReducer（nextReducer） 替换当前用来计算state的reducer，感觉应用场景有点脱离实际
 
->* combineReducers 的出现意义就是随着应用场景越来越复杂,需要将reducer函数进行拆分，各自相对独立地管理一部分state
+>## combineReducers 的出现意义就是随着应用场景越来越复杂,需要将reducer函数进行拆分，各自相对独立地管理一部分state
 
     rootReducer = combineReducers({potato:potatoReducer,tomato:tomatoReducer})
     rootState = {
