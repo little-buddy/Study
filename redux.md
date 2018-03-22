@@ -1,41 +1,40 @@
-redux 只是一个用来管理state并进行概念上的约束的这么一个类库，实际开发过程中还会配合 UI 绑定库 react-redux
+Redux 只是一个用来管理state并进行概念上的约束的这么一个类库，实际开发过程中还会配合 UI 绑定库 react-redux
 ===
- ## redux一共只有5个API，通过这5个API进行 state管理机制的扩展和约束
+>## Redux一共只有5个API，通过这5个API进行 state管理机制的扩展和约束
 >* createStore(reducer,[preloadedState]、[enhancer])
 >* combineReducers(reducers)
 >* applyMiddleware(...middlewares)
 >* bindActionCreators(actionCreateors,dispatch)
 >* compose(...function/')
 
-    stroe API
-    -
-        getState
-        dispatch
-        subscribe
-        getReducer
-        replaceReducer(nextReducer)
+>##stroe API
+>* getState
+>* dispatch
+>* subscribe
+>* getReducer
+>* replaceReducer(nextReducer)
 
-    umd 的含义是通用模块规范，是对 AMD CommonJS的一种兼容性写法
-        (function (root, factory) {
-            if (typeof define === 'function' && define.amd) {
-                // AMD
-                define(['jquery'], factory);
-            } else if (typeof exports === 'object') {
-                // Node, CommonJS-like
-                module.exports = factory(require('jquery'));
-            } else {
-                // Browser globals (root is window)
-                root.returnExports = factory(root.jQuery);
-            }
-        }(this, function ($) {
-            //    methods
-            function myFunc(){};
+>##[题外] umd 的含义是通用模块规范，是对 AMD CommonJS的一种兼容性写法
+    (function (root, factory) {
+        if (typeof define === 'function' && define.amd) {
+            // AMD
+            define(['jquery'], factory);
+        } else if (typeof exports === 'object') {
+            // Node, CommonJS-like
+            module.exports = factory(require('jquery'));
+        } else {
+            // Browser globals (root is window)
+            root.returnExports = factory(root.jQuery);
+        }
+    }(this, function ($) {
+        //    methods
+        function myFunc(){};
 
-            //    exposed public method
-            return myFunc;
-        }));
+        //    exposed public method
+        return myFunc;
+    }));
 
-        这就是一种umd写法，既支持Amd 又支持CommonJS，还支持 global
+    这就是一种umd写法，既支持Amd 又支持CommonJS，还支持 global
 
 
         createStore(reducer,[preloadedState],[enhancer])
