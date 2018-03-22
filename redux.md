@@ -1,11 +1,11 @@
 redux 只是一个用来管理state并进行概念上的约束的这么一个类库，实际开发过程中还会配合 UI 绑定库 react-redux
 ===
  ## redux一共只有5个API，通过这5个API进行 state管理机制的扩展和约束
->*createStore(reducer,[preloadedState]、[enhancer])
->*combineReducers(reducers)
->*applyMiddleware(...middlewares)
->*bindActionCreators(actionCreateors,dispatch)
->*compose(...function/')
+>* createStore(reducer,[preloadedState]、[enhancer])
+>* combineReducers(reducers)
+>* applyMiddleware(...middlewares)
+>* bindActionCreators(actionCreateors,dispatch)
+>* compose(...function/')
 
     stroe API
     -
