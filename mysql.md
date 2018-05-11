@@ -13,7 +13,7 @@
 设置字符集的时候需要关闭数据库，然后在mysql路径下找到 support-files/mysql-default.cnf 这个文件
 如果没有就直接在 /etc 下创建 my.cnf文件，并把基础的文件信息复制进去
 转码完成,复制的代码格式
-    # Example MySQL config file for medium systems.
+    `# Example MySQL config file for medium systems.
     #
     # This is for a system with little memory (32M - 64M) where MySQL plays
     # an important part, or systems up to 128M where MySQL is used together with
