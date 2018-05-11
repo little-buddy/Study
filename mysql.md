@@ -1,13 +1,16 @@
 # Mac下的 mysql配置 version -5.7.22
 ***
 > * 在系统偏好设置里面开启 mysql服务
+
 > * 设置mysql环境变量
     `touch/vi .bash_profile
     open -e .bash_profile`
     在文本框输入 `export PATH=${PATH}:/usr/local/mysql/bin `
     输入完毕之后需要 source ~/.bash_profile
+
 > * 设置新密码
     `mysqladmin -u root -p password "root"` 这里root就是初始密码，会要求输入原始密码进行重置
+
 > * 设置数据库字符集为 utf-8 web端的标准字符编码集
 `show variables like '%char%'` 展示当前数据库的各部分编码格式
 设置字符集的时候需要关闭数据库，然后在mysql路径下找到 support-files/mysql-default.cnf 这个文件
