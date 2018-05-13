@@ -74,3 +74,49 @@
 
 > `间接寻址` 就是原本数组是存数据元素的，现在用来存放指向数据元素的指针，理论分析时间复杂度是没有变的，但从底层来看它对插入、删除操作会比线性表效率高
 
+## 应用举例
+> * 大整数求和，数据位数比较多无法用现有数据类型表示的时候，可能就是用数组的下标模拟对应的位进行相应的操作
+> * 一元多项式求和 数据元素的个数难以确定所以采用 链表的形式
+
+```javascript
+// 我在处理的时候没有考虑到正负数，也就是说在相加的过程中有一些 项会被抵消会做删除结点的操作，哎我真的太粗心了
+var obj = {
+    c_value,
+    c_sub,
+    next
+}
+
+function sum(first_q,first_p){
+    var q_pre = first_q,
+        p_pre = first_p,
+        q = q_pre -> next,
+        p = p_pre -> next
+
+    while(q!=null&&p!=null){
+        if(q -> c_value < p->c_value){
+            q_pre = q
+            q = q -> next
+        }else if(q -> c_value > p -> c_value){
+            var temp = p -> next
+            q_pre -> next = p
+            p -> next = q
+            p = temp
+        }else{
+            q -> c_value += q-> c_value
+            if(q -> c_value == 0){
+                q = q ->next
+                q_pre -> next = q
+            }else{
+                q_pre = q
+                q = q-> next
+            }
+            //本质上来说 p的前驱用不到的，因为是以 q 为主链的
+            p = p -> next
+        }
+    }
+    if(p!=null){
+        q ->next = p
+    }
+
+    return q
+}
