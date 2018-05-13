@@ -5,14 +5,14 @@
 >* n(n>=0) 个具有相同数据类型的数据元素的有限序列。线性表中数据元素的个数称为线性表的长度，长度等于0时称为空表
 >* 除了队首与队尾，都只有一个前驱和一个后继
 >* 线性表有的方法
-    InitList 初始化
-    DestroyList 摧毁
-    length 长度
-    get 获得
-    locate 返回查找元素的下标
-    insert 插入
-    delete 删除
-    empty 空
-    printList 按序号依次输出元素
+> > - InitList 初始化
+> > - DestroyList 摧毁
+> > - length 长度
+> > - get 获得
+> > - locate 返回查找元素的下标
+> > - insert 插入
+> > - delete 删除
+> > - empty 空
+> > - printList 按序号依次输出元素
 
 ## 线性表的顺序存储结构及实现
