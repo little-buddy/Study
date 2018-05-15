@@ -120,3 +120,171 @@ function sum(first_q,first_p){
 
     return q
 }
+
+顺序表 逆置算法
+
+    function reverseSeq(seq){
+        var arr = [],
+            len = seq.length
+        for(var i=0;i<len;i++){
+            arr [i] = seq[len-1-i]
+        }
+
+        return arr;
+    }
+
+单链表 逆置算法
+
+    对于单链表来说一定是有一个头结点的,并且它是不存在前驱的，所以这个逆置算法只能
+    function reverseLinked(first){
+        // 从头结点开始，一定是要置空处理的
+
+        var one = q_pre = first -> next,   // 这边是获取第一个结点
+            q = p -> next
+
+我是在初始化第一个值的时候进行处理，就是这里能不能把它放进 循环中统一处理
+
+        while(q!=null){
+            var temp = q->next
+            q -> next = q_pre
+            q_pre = p
+            q = temp
+        }
+// 增加尾结点标志
+        one ->next = null
+
+        return p
+    }
+
+    给2个单链表L1 L2 表示集合（结合元素的唯一性）,判断L1 是否是 L2 的子集
+
+    如果L1 为空 则是L2的子集
+    L1 不为空，就需要判断L1 中的元素是否在 L2中都存在
+    时间复杂度是 O(n^2)
+    function isSubSet(set1,set2){
+        // 这里已经是获取到第一个结点的状态了
+
+        if(set1!=null){
+            while(set1!=null){
+                var flag = true
+                while(set2!=null){
+                    if(set2 -> data == set1 -> data){
+                        flag  = false;
+                        break;
+                    }
+                    set2 = set2 -> next
+                }
+                if(flag){
+                    return false;
+                }
+                set1 = set1 -> next
+            }
+        }
+        // 从概念上来说，空集是任意集合的子集，意味着传入的2个是有先后顺序的，对于我来说
+        return true;
+    }
+
+    商店仓库中，对电视机按其价格从低到高建立一个单链表，而链表的每一个结点指出同样价格的电视机台数，现有m台价格为n元的电视机入库
+    // linked 应该是从头指针开始
+
+    其实三个情况，分空链表，中间链表（已存在和不存），末尾链表，因为这是一个顺序表，唯一能优化的就是采用二分法插入，但又由于单链表并不是顺序表，所以二分法似乎 叉叉
+    function Inser(linked,m,n){
+        var p = linked -> next,
+            p_pre = linked
+        while(p!=null){
+            if(p -> price == n){
+                p -> count+=m
+                break;
+            }
+            if(p -> price > n && p_pre -> price <n){
+                // 插入
+                p_pre -> next = point
+                point -> next = p
+
+                break;
+            }
+
+            p_pre = p
+            p = p -> next
+        }
+        p -> next = point
+        point -> next =null
+    }
+
+    没有头结点的单链表表示八进制数，要求写一个函数 Add，该函数有两个参数 P Q
+    这种假发一定是涉及到进位的
+
+// 以 P 为主链
+    function Add(P,Q){
+        var p = reverse(P),
+            q = reverse(Q),
+            flag = 0
+
+         while(p!=null&&q!=null){
+            var sum = p -> num + q -> num+flag,
+                quotient = Math.floor(sum/8),
+                remainder = sum%8
+            if(quotient>0)
+                flag = quotient
+            else
+                flag = 0
+
+            p -> num = remainder
+
+         }
+
+        // 由于加法一般是从低位开始的，而这个链表头部表示的是高位，所以有必要先将链表进行逆置
+
+        // 这里面不存在头结点
+        function reverse(linked){
+
+            if(linked -> next == null){
+                throw new Error("The p_pre is mistake or bug");
+            }
+
+            var p_pre = linked,
+                p = p_pre -> next,
+                p_pre -> next =null
+
+            while(p!=null){
+                var temp = p -> next
+                p -> next = p_pre
+                p_pre = p
+                p = temp
+            }
+
+            return p_pre
+        }
+    }
+
+    设有编号 1、2、3 ... n 的n(n>0)个人围成一个圈，从第一个人开始报数，报到m时停止报数，第m个人出圈，直到所有人都出圈，计算求n个人的次序
+
+    由于输出一个值会将该值从列表中删除，所以不存在用顺序表了，因为顺序表的增删消耗性能太大了，可以pass掉
+
+    使用循环链表的时候几个细节还是需要处理的，加入链表为空null，单链表是单向的，所以处理起来很烦人
+
+    // 假设这个循环链表有一个头指针
+    function printList(linked,m){
+        var p = linked,
+            count =1,
+            p_pre = p
+
+            // 应该优先把 空链表以及单个链表处理掉
+
+        // 大于2个值的链表
+        // 只剩一个元素就跳出循环，
+        while(p -> next != p){
+            q_pre = p
+            p = q_pre
+            if(count==m){
+                p -> next = p -> next -> next
+            }
+            count++
+        }
+
+        cout<< p -> num
+    }
+
+    4个人过桥问题是属于图的问题，不知道为什么会放到这个 线性表中。。。迪杰特斯拉 Dijkstra 是一个最短路径算法
+
+    图graph 和 树tree ，是目前我的2大梦魇~~~
