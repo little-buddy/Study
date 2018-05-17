@@ -71,6 +71,7 @@
 <br> 买票问题可以理解成 将5角入栈之后再出栈，有多少种出栈方式 ,本质上来说 这是一个 pop push 的排列组合
 <br> 最终是根据数据模型 一个坐标轴来证明 取反操作是与之一一对应的，来证明不符合条件的数列是C2n(n+1)
 
+```javascript
 circular queue 循环队列
 
 function circularLinked(rear){
