@@ -1,0 +1,36 @@
+
+git show 显示某次提交的内容
+
+git add <file> 将工作文件修改提交到本地暂存
+git add . 		将所有修改过的工作文件提交到暂存区
+git rm <file>	从版本库中删除文件
+git rm <file> --cached 从版本库中删除文件但不删除文件
+git reset <file> 从暂存区恢复到工作文件
+git reset --hard 恢复最近一次提交过的状态
+
+git revert 恢复某次提交的状态
+git revert HEAD 恢复最后一次提交的状态
+
+git pull 抓取远程仓库所有分支更新并合并到本地
+git fetch origin 抓取远程仓库更新
+git merge origin 将远程主分支合并到本地当前分支
+git push push所有分支
+git push -u origin 将本地分支推到远程分支，如果没有则创建
+git push origin # 创建远程分支
+
+git remote -v 查看远程服务器地址和仓库名称
+git remote show origin 查看远程服务器仓库状态
+
+git branch -r 远程库的分支
+
+
+// 删除远程 文件
+git rm --cached file
+git commit -m ''
+git push
+
+// 设置本地特定文件不被提交 非gitignore方式
+git update-index --assume-unchanged file
+
+// 使本地远程分支与远程一致
+git remote prune origin
