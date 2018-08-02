@@ -34,3 +34,12 @@ git update-index --assume-unchanged file
 
 // 使本地远程分支与远程一致
 git remote prune origin
+
+git cherry-pick HEAD-id 根据头ID 将某次pick移到另一个pick
+
+shell脚本
+注释 #
+
+我的webstorm 有2个问题
+无法创建vue文件
+无法RN启动调试
